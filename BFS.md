@@ -81,7 +81,11 @@ int minDepth(TreeNode root) {
 ## 多源BFS
 
 ## 01BFS
-使用双端队列，LinkedList,根据0,1不同权值，addFirst或者addLast
+### 双端队列（最优解法）
+LinkedList,根据0,1不同权值，addFirst或者addLast
+
+### 优先队列
+利用PriorityQueue辅助解题
 
 ### 例题
 [到达角落需要移除障碍物的最小数目](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/)
