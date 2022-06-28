@@ -1,3 +1,6 @@
+## BFS和DFS的区别
+BFS适合求最短路径。BFS是面，DFS是线。
+
 ## 图的BFS
 ```java
 // 计算从起点 start 到终点 target 的最近距离
@@ -71,4 +74,10 @@ int minDepth(TreeNode root) {
 }
 
 ```
+## 双向BFS
+双向 BFS 是从起点和终点同时开始扩散，当两边有交集的时候停止。
+双向 BFS 也有局限，因为你必须知道终点在哪里。
 
+## 多源BFS
+
+## BFS
