@@ -1,6 +1,9 @@
 ## BFS和DFS的区别
 BFS适合求最短路径。BFS是面，DFS是线。
 
+## BFS和DFS的相同点
+本质都是暴力搜索算法。别名：泛洪算法。
+
 ## 图的BFS
 ```java
 // 计算从起点 start 到终点 target 的最近距离
@@ -79,6 +82,9 @@ int minDepth(TreeNode root) {
 双向 BFS 也有局限，因为你必须知道终点在哪里。
 
 ## 多源BFS
+
+### 例题
+[地图分析](https://leetcode.cn/problems/as-far-from-land-as-possible/)
 
 ## 01BFS
 ### 双端队列（最优解法）
