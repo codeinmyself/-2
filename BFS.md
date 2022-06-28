@@ -80,4 +80,12 @@ int minDepth(TreeNode root) {
 
 ## 多源BFS
 
-## BFS
+## 01BFS
+使用双端队列，LinkedList,根据0,1不同权值，addFirst或者addLast
+
+### 例题
+[到达角落需要移除障碍物的最小数目](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/)
+
+[使网格图至少有一条有效路径的最小代价](https://leetcode.cn/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)
+
+[信物传送](https://leetcode.cn/problems/6UEx57/)
