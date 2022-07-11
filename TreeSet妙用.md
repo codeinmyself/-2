@@ -1,4 +1,4 @@
-## 继承TreeSet
+## 继承TreeSet,使用接口：pollFirst
 [无限集中的最小数字](https://leetcode.cn/problems/smallest-number-in-infinite-set/)
 ```java
 class SmallestInfiniteSet extends TreeSet<Integer> {
