@@ -36,3 +36,78 @@ class Solution {
     }
 }
 ```
+## 树分割（DFS时间戳）
+[从树中删除边的最小分数](https://leetcode.cn/problems/minimum-score-after-removals-on-a-tree/)
+```java
+class Solution {
+    public int clock;
+    public int[] nums;
+    public int[] xor;
+    public int[] in;
+    public int[] out;
+    public List<Integer>[] lists;
+
+    public int minimumScore(int[] nums, int[][] edges) {
+        // 数据准备
+        int res = Integer.MAX_VALUE;
+        int n = nums.length;
+        this.nums = nums;
+        in = new int[n];
+        out = new int[n];
+        xor = new int[n];
+        
+        // 统计各个节点的直连节点
+        lists = new List[n];
+        for(int i = 0; i < n; i ++){
+            lists[i] = new ArrayList<>();
+        }
+        for(int[] e: edges){
+            lists[e[0]].add(e[1]);
+            lists[e[1]].add(e[0]);
+        }
+
+        // DFS遍历计算各子树的xor及进入退出时间
+        dfs(0, -1);
+
+        // 遍历分离出的两棵子树的根节点 --- O(n^2)
+        int x = 0, y = 0, z = 0;
+        for(int i = 1; i < n; i ++){
+            for(int j = i + 1; j < n; j ++){
+                if(isParent(i, j)){
+                    x = xor[0] ^ xor[i];
+                    y = xor[i] ^ xor[j];
+                    z = xor[j];
+                }else if(isParent(j, i)){
+                    x = xor[0] ^ xor[j];
+                    y = xor[j] ^ xor[i];
+                    z = xor[i];
+                }else{
+                    x = xor[0] ^ xor[i] ^ xor[j];
+                    y = xor[i];
+                    z = xor[j];
+                }
+                res = Math.min(res, Math.max(x, Math.max(y, z)) - Math.min(x, Math.min(y, z)));
+            }
+        }
+        return res;
+    }
+
+    // 深度优先：遍历父节点之外的其他节点即可
+    public void dfs(int x, int f){
+        in[x] = ++clock;
+        xor[x] = nums[x];
+        for(int y: lists[x]){
+            if(y != f){
+                dfs(y, x);
+                xor[x] ^= xor[y];
+            }
+        }
+        out[x] = clock;
+    }
+
+    // 根据入出时间戳判断父子关系
+    public boolean isParent(int x, int y){
+        return in[x] <= in[y] && out[y] <= out[x];
+    }
+}
+```
