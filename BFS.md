@@ -88,13 +88,46 @@ int minDepth(TreeNode root) {
 
 ## 01BFS
 ### 双端队列（最优解法）
-LinkedList,根据0,1不同权值，addFirst或者addLast
+LinkedList/ArrayDeque,根据0,1不同权值，addFirst或者addLast.
+[到达角落需要移除障碍物的最小数目](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/)
+```java
+class Solution {
+    final static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
+    public int minimumObstacles(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int[][]  dis = new int[m][n];
+        for (var i = 0; i < m; i++) 
+            Arrays.fill(dis[i], Integer.MAX_VALUE); // 初始值赋予最大值
+        dis[0][0] = 0;
+        ArrayDeque<int[]> q = new ArrayDeque<int[]>();
+        q.addFirst(new int[]{0, 0}); // 加入队首
+        while (!q.isEmpty()) {
+            int[] p = q.pollFirst(); // 取出队首
+            int x = p[0], y = p[1];
+            for (int[] d : dirs) {
+                int nx = x + d[0], ny = y + d[1]; // 四个方向
+                if (0 <= nx && nx < m && 0 <= ny && ny < n) { // 边界判断
+                    int g = grid[nx][ny]; // grid本身就有区分障碍物和空单元格，用1，0区分
+                    if (dis[x][y] + g < dis[nx][ny]) { // 更新单元格最小成本
+                        dis[nx][ny] = dis[x][y] + g;
+                        if (g == 0) {
+                            q.addFirst(new int[]{nx, ny}); // 如果是空白格，加入队首，优先遍历
+                        }else {
+                            q.addLast(new int[]{nx, ny}); // 如果是障碍物，加入对尾，最后遍历
+                        }
+                    }
+                }
+            }
+        }
+        return dis[m - 1][n - 1];
+    }
+}
+```
 ### 优先队列
 利用PriorityQueue辅助解题
 
 ### 例题
-[到达角落需要移除障碍物的最小数目](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/)
 
 [使网格图至少有一条有效路径的最小代价](https://leetcode.cn/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)
 
