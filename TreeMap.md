@@ -43,10 +43,11 @@ class CountIntervals {
     public int count() { return cnt; }
 }
 ```
-## ceilingEntry(Object key) 大于等于，不存在则返回null
+## NavigableMap接口扩展的SortedMap，具有了针对给定搜索目标返回最接近匹配项的导航方法
+### ceilingEntry(Object key) 大于等于，不存在则返回null
 ![image](https://user-images.githubusercontent.com/20769910/179881373-d7b0e022-dbb6-435a-8f22-624e63c6c722.png)
-## ceilingKey(Object key) 大于等于
-## floorEntry(Object key) 小于等于
-## floorKey(Object key) 小于等于
-## higherEntry(Object key) 大于
-## lowerEntry(Object key) 小于
+### ceilingKey(Object key) 大于等于
+### floorEntry(Object key) 小于等于
+### floorKey(Object key) 小于等于
+### higherEntry(Object key) 大于
+### lowerEntry(Object key) 小于
