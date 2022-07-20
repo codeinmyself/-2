@@ -18,3 +18,7 @@ class Solution {
 	}
 }
 ```
+
+## ceilingEntry(Object key)
+![image](https://user-images.githubusercontent.com/20769910/179881373-d7b0e022-dbb6-435a-8f22-624e63c6c722.png)
+
