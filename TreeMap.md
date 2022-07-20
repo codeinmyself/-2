@@ -43,7 +43,7 @@ class CountIntervals {
     public int count() { return cnt; }
 }
 ```
-## ceilingEntry(Object key) 大于等于
+## ceilingEntry(Object key) 大于等于，不存在则返回null
 ![image](https://user-images.githubusercontent.com/20769910/179881373-d7b0e022-dbb6-435a-8f22-624e63c6c722.png)
 ## ceilingKey(Object key) 大于等于
 ## floorEntry(Object key) 小于等于
